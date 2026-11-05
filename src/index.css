@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------
+   Design tokens (theme): one neutral near-black scale, orange as the
+   primary accent, blue only as the secondary glow. Green is reserved for
+   "live / available" status (hero badge + WhatsApp).
+   --------------------------------------------------------------------- */
+:root {
+  --ink: #050505;
+  --surface: #0C0C0F;
+  --line: rgba(255, 255, 255, 0.08);
+  --orange: #FF7A1A;
+  --blue: #2F6BFF;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  background: var(--ink);
+  color: #E4E4E7;
+  font-family: "Geist Variable", Geist, Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--orange); color: var(--ink); }
+
+/* Single source of truth: scroll-margin-top offsets anchor jumps so the sticky navbar never covers headings */
+section[id] { scroll-margin-top: 6rem; }
+
+/* Glass surface: neutral (no blue tint) so it sits on the black without a color cast */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Orange -> blue gradient border (used on the About card) */
+.gradient-border { position: relative; border-radius: 1.5rem; }
+.gradient-border::before {
+  content: "";
+  position: absolute; inset: 0; padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #FF7A1A, rgba(255,255,255,0.06) 45%, #2F6BFF);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------
+   Spotlight card: a soft orange light and a lit border follow the cursor
+   (position written by useSpotlight into --mx / --my). Paint-only layers,
+   no layout. Touch devices simply get the plain card.
+   --------------------------------------------------------------------- */
+.spot {
+  position: relative;
+  isolation: isolate;
+  transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), background-color var(--dur-base) var(--ease-out);
+}
+.spot::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 122, 26, 0.13), transparent 62%);
+  opacity: 0; transition: opacity var(--dur-base) var(--ease-out);
+}
+.spot::after {
+  content: "";
+  position: absolute; inset: 0; padding: 1px; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 122, 26, 0.7), rgba(47, 107, 255, 0.28) 46%, transparent 72%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0; transition: opacity var(--dur-base) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .spot:hover { transform: translateY(-4px); }
+  .spot:hover::before, .spot:hover::after { opacity: 1; }
+}
+
+/* Film grain: one static tile, no animation. Gives the black depth instead of flat digital fill. */
+.grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+  .spot:hover { transform: none; }
+}
+
+/* Touch / no-Lenis fallback: native smooth anchor jumps (Lenis adds .lenis on desktop and handles it itself). */
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.lenis) { scroll-behavior: smooth; }
+}
+
+/* Custom cursor: hide the native one only while the custom cursor is mounted (desktop, motion allowed). */
+html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
+
+/* Programmatic focus on an in-page anchor target should not draw a box around a whole section. */
+[tabindex="-1"]:focus { outline: none; }
+
+:focus-visible { outline: 2px solid #FF7A1A; outline-offset: 3px; border-radius: 6px; }
+
+/* =====================================================================
+   Custom dark scrollbar (global + modal), neutral grey
+   ===================================================================== */
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: rgba(5, 5, 5, 0.9); }
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+::-webkit-scrollbar-thumb:hover { background: #FF7A1A; box-shadow: 0 0 10px rgba(255, 122, 26, 0.5); }
+
+html { scrollbar-width: thin; scrollbar-color: #27272A rgba(5, 5, 5, 0.9); }
+
+.custom-scrollbar::-webkit-scrollbar { width: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.04); border-radius: 9999px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #FF7A1A; border-radius: 9999px; box-shadow: 0 0 10px rgba(255, 122, 26, 0.35); }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #ff933d; box-shadow: 0 0 14px rgba(255, 122, 26, 0.6); }
+.custom-scrollbar { scrollbar-width: thin; scrollbar-color: #FF7A1A rgba(255, 255, 255, 0.04); }
