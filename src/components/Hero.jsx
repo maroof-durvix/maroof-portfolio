@@ -296,8 +296,8 @@ export default function Hero() {
             </Magnetic>
             <Magnetic>
               <a
-                href={profile.resumeUrl || "/Maroof_Ahmed_Durwesh_Resume.pdf"}
-                download="Maroof_Ahmed_Durwesh_Resume.pdf"
+                href={profile.resumeUrl || "/MAROOF_AHMED_DURWESH_.pdf"}
+                download="MAROOF_AHMED_DURWESH_.pdf"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.06] px-5 py-3 text-sm font-bold text-white backdrop-blur-md transition hover:scale-[1.03] hover:border-brand-orange hover:bg-brand-orange/10 hover:text-brand-orange active:scale-95"
               >
                 <Download size={15} className="text-brand-orange" aria-hidden="true" />

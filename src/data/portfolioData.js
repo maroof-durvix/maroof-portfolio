@@ -12,7 +12,7 @@ export const profile = {
   instagram: "https://www.instagram.com/maroof.durvix?srtk=NHFoZXl3MGZmeDh6",
   heroVideo: "/media/intro.mp4",
   heroImage: "/media/poster.jpg",
-  resumeUrl: "/Maroof_Ahmed_Durwesh_Resume.pdf",
+  resumeUrl: "/MAROOF_AHMED_DURWESH_.pdf",
 };
 
 export const nav = [

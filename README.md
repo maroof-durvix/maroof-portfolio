@@ -18,7 +18,7 @@ A cinematic, high-performance developer portfolio showcasing **20+ production-gr
 - **📱 Verified Android APK Packages:** Direct downloads for **Green Life** (`/GreenLife.apk`) and **Kinetix Fitness** (`/kinetix_fitness_app.apk`).
 - **🖥️ Interactive Sandbox Live Preview:** Multi-device viewport inspector (Desktop, Tablet, Mobile) with dynamic hardware specs, responsive iframe testing, and direct external launchpad support.
 - **🎨 Luxury Digital Architecture:** Custom dark mode glassmorphism (`#050505`), kinetic scroll HUD indicators, and animated percentage preloader (`0% ➔ 100%`).
-- **📄 Verified Professional Resume:** Direct access to Maroof Ahmed Durwesh's updated 2026 engineering CV (`/Maroof_Ahmed_Durwesh_Resume.pdf`).
+- **📄 Verified Professional Resume:** Direct access to Maroof Ahmed Durwesh's updated 2026 engineering CV (`/MAROOF_AHMED_DURWESH_.pdf`).
 
 ---
 
@@ -40,7 +40,7 @@ maroof-portfolio/
 ├── public/
 │   ├── GreenLife.apk                  # Contest-Azm winning Android package
 │   ├── kinetix_fitness_app.apk        # Kinetix workout companion Android package
-│   ├── Maroof_Ahmed_Durwesh_Resume.pdf# Updated 2026 technical resume
+│   ├── MAROOF_AHMED_DURWESH_.pdf      # Updated 2026 technical resume
 │   ├── media/                         # Hero video & fallback posters
 │   ├── robots.txt                     # SEO search engine crawl policies
 │   └── sitemap.xml                    # Canonical search index

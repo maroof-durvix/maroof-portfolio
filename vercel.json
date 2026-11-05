@@ -20,6 +20,13 @@
       "headers": [{ "key": "Content-Type", "value": "application/vnd.android.package-archive" }]
     },
     {
+      "source": "/MAROOF_AHMED_DURWESH_.pdf",
+      "headers": [
+        { "key": "Content-Type", "value": "application/pdf" },
+        { "key": "Content-Disposition", "value": "inline; filename=\"MAROOF_AHMED_DURWESH_.pdf\"" }
+      ]
+    },
+    {
       "source": "/Maroof_Ahmed_Durwesh_Resume.pdf",
       "headers": [
         { "key": "Content-Type", "value": "application/pdf" },

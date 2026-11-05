@@ -138,14 +138,14 @@ Maroof is a **Full-Stack Developer & Software Engineer** and the Founder & Princ
       return `📄 **Maroof Ka Verified Resume / CV:**
 
 Aap Maroof ka updated official PDF resume yahan se direct download kar sakte hain:
-👉 **[Download Maroof Ahmed Durwesh Resume (PDF)](/Maroof_Ahmed_Durwesh_Resume.pdf)**
+👉 **[Download Maroof Ahmed Durwesh Resume (PDF)](/MAROOF_AHMED_DURWESH_.pdf)**
 
 Is me unke complete professional experience, education, award-winning projects aur technical certifications darj hain.`;
     }
     return `📄 **Official Resume / CV:**
 
 You can download Maroof Ahmed Durwesh's updated technical resume directly:
-👉 **[Download Maroof Ahmed Durwesh Resume (PDF)](/Maroof_Ahmed_Durwesh_Resume.pdf)**
+👉 **[Download Maroof Ahmed Durwesh Resume (PDF)](/MAROOF_AHMED_DURWESH_.pdf)**
 
 It includes his full engineering timeline, production systems architecture, and Contest-Azm 1st place gold credential.`;
   }
@@ -237,7 +237,7 @@ Personalized workout routines, daily calorie tracking, hydration logs, and miles
 - ✉️ **ای میل:** [${profile.email}](mailto:${profile.email})
 - 💼 **لنکڈ ان:** [LinkedIn Profile](${profile.linkedin})
 - 💻 **گٹ ہب:** [GitHub Profile](${profile.github})
-- 📄 **سی وی:** [Download PDF Resume](/Maroof_Ahmed_Durwesh_Resume.pdf)
+- 📄 **سی وی:** [Download PDF Resume](/MAROOF_AHMED_DURWESH_.pdf)
 
 آپ واٹس ایپ پر ایک کلک سے ڈائریکٹ میسج بھیج سکتے ہیں!`;
     }
@@ -249,7 +249,7 @@ Aap freelance projects, web/mobile development ya technical consultation ke liye
 - ✉️ **Email:** [${profile.email}](mailto:${profile.email})
 - 💼 **LinkedIn:** [Maroof Ahmed Durwesh](${profile.linkedin})
 - 💻 **GitHub:** [github.com/maroof-durvix](${profile.github})
-- 📄 **Resume / CV:** [Download PDF CV](/Maroof_Ahmed_Durwesh_Resume.pdf)
+- 📄 **Resume / CV:** [Download PDF CV](/MAROOF_AHMED_DURWESH_.pdf)
 
 *Aap isi waqt upar diye gaye WhatsApp link par click karke direct chat shuru kar sakte hain!*`;
     }
@@ -260,7 +260,7 @@ Maroof is available for custom software development, technical consultation, and
 - ✉️ **Direct Email:** [${profile.email}](mailto:${profile.email})
 - 💼 **LinkedIn:** [Maroof Ahmed Durwesh](${profile.linkedin})
 - 💻 **GitHub:** [github.com/maroof-durvix](${profile.github})
-- 📄 **Official Resume:** [Download Verified PDF CV](/Maroof_Ahmed_Durwesh_Resume.pdf)
+- 📄 **Official Resume:** [Download Verified PDF CV](/MAROOF_AHMED_DURWESH_.pdf)
 
 *Click the WhatsApp link above to initiate an instant direct brief!*`;
   }
