@@ -1,24 +1,31 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
+  AlertCircle,
   Battery,
   Check,
+  CheckCircle2,
   Copy,
+  Cpu,
   Download,
   ExternalLink,
+  MessageCircle,
   Monitor,
   ShieldCheck,
   Signal,
   SlidersHorizontal,
   Smartphone,
   Tablet,
+  TrendingUp,
   Wifi,
   X,
 } from "lucide-react";
+import { caseStudies, profile } from "../data/portfolioData.js";
 
 export default function LivePreviewModal({ project, onClose }) {
   const [device, setDevice] = useState("desktop"); // "desktop" | "tablet" | "mobile"
   const [showSpecs, setShowSpecs] = useState(true);
+  const [sidebarTab, setSidebarTab] = useState("specs"); // "specs" | "case-study"
   const [copied, setCopied] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
@@ -66,6 +73,17 @@ export default function LivePreviewModal({ project, onClose }) {
   );
   const apkHref = project.apkUrl || project.downloadUrl || (liveUrl.endsWith(".apk") ? liveUrl : null);
   const apkFileName = project.downloadFileName || (apkHref ? apkHref.split("/").pop() : "application.apk");
+
+  const matchingCaseStudy = project
+    ? caseStudies.find(
+        (cs) =>
+          (cs.id && project.id && cs.id === project.id) ||
+          (project.title &&
+            cs.title &&
+            (project.title.toLowerCase().includes(cs.title.toLowerCase()) ||
+              cs.title.toLowerCase().includes(project.title.toLowerCase())))
+      )
+    : null;
 
   const copyUrl = async () => {
     try {
@@ -426,67 +444,191 @@ export default function LivePreviewModal({ project, onClose }) {
                   className="hidden md:flex shrink-0 flex-col justify-between overflow-y-auto border-l border-white/10 bg-[#090D16]/95 p-5 lg:p-6 custom-scrollbar"
                 >
                   <div>
-                    {/* Architectural Profile Header */}
-                    <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-4">
-                      <div className="min-w-0">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-orange font-mono">
-                          [ ARCHITECTURAL PROFILE ]
-                        </span>
-                        <h2 id="preview-modal-title" className="mt-1 text-lg sm:text-xl font-black text-white truncate">
-                          {project.title}
-                        </h2>
-                        <p className="mt-0.5 text-xs font-semibold text-zinc-400">{project.category}</p>
-                      </div>
-                      {project.badge && (
-                        <span className="shrink-0 rounded-full border border-brand-orange/40 bg-brand-orange/10 px-2.5 py-0.5 text-[10px] font-bold text-brand-orange shadow-[0_0_12px_rgba(255,122,26,.15)]">
-                          {project.badge}
-                        </span>
-                      )}
+                    {/* Architectural Profile / Case Study Tabs */}
+                    <div className="flex items-center gap-1.5 rounded-xl bg-white/[0.05] p-1 border border-white/10 mb-4">
+                      <button
+                        type="button"
+                        onClick={() => setSidebarTab("specs")}
+                        className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-[11px] font-bold font-mono uppercase tracking-wider transition ${
+                          sidebarTab === "specs"
+                            ? "bg-brand-orange text-ink shadow-[0_2px_8px_rgba(255,122,26,.3)]"
+                            : "text-zinc-400 hover:text-white"
+                        }`}
+                      >
+                        <SlidersHorizontal size={12} />
+                        <span>SPECS</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setSidebarTab("case-study")}
+                        className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-[11px] font-bold font-mono uppercase tracking-wider transition ${
+                          sidebarTab === "case-study"
+                            ? "bg-brand-orange text-ink shadow-[0_2px_8px_rgba(255,122,26,.3)]"
+                            : "text-zinc-400 hover:text-white"
+                        }`}
+                      >
+                        <TrendingUp size={12} />
+                        <span>CASE STUDY</span>
+                        {matchingCaseStudy && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                        )}
+                      </button>
                     </div>
 
-                    {/* Executive Description */}
-                    <div className="mt-4">
-                      <h4 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 font-mono">
-                        System Architecture &amp; Purpose
-                      </h4>
-                      <p className="mt-2 text-xs leading-relaxed text-zinc-300">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    {/* Performance Milestones */}
-                    <div className="mt-5 border-t border-white/10 pt-4">
-                      <h4 className="text-[10px] font-bold uppercase tracking-wider text-brand-orange font-mono">
-                        PERFORMANCE MILESTONES:
-                      </h4>
-                      <ul className="mt-2.5 space-y-2">
-                        {milestones.map((m) => (
-                          <li key={m} className="flex items-center gap-2 text-xs font-medium text-zinc-200">
-                            <span className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand-orange/20 text-[10px] text-brand-orange">
-                              ✓
+                    {sidebarTab === "specs" ? (
+                      <>
+                        {/* Architectural Profile Header */}
+                        <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-4">
+                          <div className="min-w-0">
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-brand-orange font-mono">
+                              [ ARCHITECTURAL PROFILE ]
                             </span>
-                            <span className="leading-tight">{m}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                            <h2 id="preview-modal-title" className="mt-1 text-lg sm:text-xl font-black text-white truncate">
+                              {project.title}
+                            </h2>
+                            <p className="mt-0.5 text-xs font-semibold text-zinc-400">{project.category}</p>
+                          </div>
+                          {project.badge && (
+                            <span className="shrink-0 rounded-full border border-brand-orange/40 bg-brand-orange/10 px-2.5 py-0.5 text-[10px] font-bold text-brand-orange shadow-[0_0_12px_rgba(255,122,26,.15)]">
+                              {project.badge}
+                            </span>
+                          )}
+                        </div>
 
-                    {/* Relational Tech Stack */}
-                    <div className="mt-5 border-t border-white/10 pt-4">
-                      <h4 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 font-mono">
-                        RELATIONAL TECH STACK:
-                      </h4>
-                      <div className="mt-2.5 flex flex-wrap gap-1.5">
-                        {project.tags.map((t) => (
-                          <span
-                            key={t}
-                            className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[10px] font-medium text-zinc-300"
-                          >
-                            {t}
+                        {/* Executive Description */}
+                        <div className="mt-4">
+                          <h4 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 font-mono">
+                            System Architecture &amp; Purpose
+                          </h4>
+                          <p className="mt-2 text-xs leading-relaxed text-zinc-300">
+                            {project.description}
+                          </p>
+                        </div>
+
+                        {/* Performance Milestones */}
+                        <div className="mt-5 border-t border-white/10 pt-4">
+                          <h4 className="text-[10px] font-bold uppercase tracking-wider text-brand-orange font-mono">
+                            PERFORMANCE MILESTONES:
+                          </h4>
+                          <ul className="mt-2.5 space-y-2">
+                            {milestones.map((m) => (
+                              <li key={m} className="flex items-center gap-2 text-xs font-medium text-zinc-200">
+                                <span className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand-orange/20 text-[10px] text-brand-orange">
+                                  ✓
+                                </span>
+                                <span className="leading-tight">{m}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Relational Tech Stack */}
+                        <div className="mt-5 border-t border-white/10 pt-4">
+                          <h4 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 font-mono">
+                            RELATIONAL TECH STACK:
+                          </h4>
+                          <div className="mt-2.5 flex flex-wrap gap-1.5">
+                            {project.tags.map((t) => (
+                              <span
+                                key={t}
+                                className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[10px] font-medium text-zinc-300"
+                              >
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      /* CASE STUDY VIEW */
+                      <div className="space-y-4">
+                        <div className="border-b border-white/10 pb-3">
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-brand-orange font-mono">
+                            [ ROI &amp; CASE STUDY ]
                           </span>
-                        ))}
+                          <h2 className="mt-1 text-base sm:text-lg font-black text-white">
+                            {matchingCaseStudy ? matchingCaseStudy.title : project.title}
+                          </h2>
+                          <p className="mt-0.5 text-[11px] text-zinc-400">
+                            {matchingCaseStudy ? matchingCaseStudy.client : "Full-stack Client Engineering"}
+                          </p>
+                        </div>
+
+                        {matchingCaseStudy ? (
+                          <>
+                            {/* Problem */}
+                            <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-3">
+                              <div className="flex items-center gap-1.5 text-red-400 text-[10px] font-bold font-mono uppercase tracking-wider">
+                                <AlertCircle size={12} />
+                                <span>The Bottleneck (Problem)</span>
+                              </div>
+                              <p className="mt-1.5 text-xs text-zinc-300 leading-relaxed">
+                                {matchingCaseStudy.problem}
+                              </p>
+                            </div>
+
+                            {/* Solution */}
+                            <div className="rounded-xl border border-sky-500/20 bg-sky-500/5 p-3">
+                              <div className="flex items-center gap-1.5 text-sky-400 text-[10px] font-bold font-mono uppercase tracking-wider">
+                                <Cpu size={12} />
+                                <span>Engineered Solution</span>
+                              </div>
+                              <p className="mt-1.5 text-xs text-zinc-300 leading-relaxed">
+                                {matchingCaseStudy.solution}
+                              </p>
+                            </div>
+
+                            {/* Result */}
+                            <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3">
+                              <div className="flex items-center gap-1.5 text-emerald-400 text-[10px] font-bold font-mono uppercase tracking-wider">
+                                <TrendingUp size={12} />
+                                <span>Business Impact (Result)</span>
+                              </div>
+                              <p className="mt-1.5 text-xs text-zinc-300 leading-relaxed">
+                                {matchingCaseStudy.result}
+                              </p>
+                              <div className="mt-3 grid grid-cols-2 gap-1.5">
+                                {matchingCaseStudy.metrics?.map((m) => (
+                                  <div
+                                    key={m.label}
+                                    className="rounded-lg border border-white/5 bg-black/40 p-2 text-center"
+                                  >
+                                    <div className="text-xs font-black text-emerald-400">{m.value}</div>
+                                    <div className="text-[9px] uppercase tracking-wider text-zinc-400 font-mono mt-0.5">
+                                      {m.label}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-center">
+                            <p className="text-xs text-zinc-300 leading-relaxed">
+                              This production build implements high-throughput micro-architecture and optimized rendering pipelines.
+                            </p>
+                            <p className="mt-2 text-[11px] text-zinc-400">
+                              Explore the full Case Studies section below or reach out to discuss custom architectural requirements for your company.
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Direct WhatsApp Consultation CTA inside Case Study Tab */}
+                        <div className="pt-2">
+                          <a
+                            href={`https://wa.me/message/BDYY4P52CJSXN1?text=Hi%20Maroof,%20I%20saw%20your%20case%20study%20for%20${encodeURIComponent(
+                              project.title
+                            )}%20and%20would%20like%20to%20discuss%20a%20similar%20solution.`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex min-h-[38px] w-full items-center justify-center gap-2 rounded-xl bg-[#25D366]/20 border border-[#25D366]/40 px-3 py-2 text-xs font-bold text-[#25D366] transition hover:bg-[#25D366] hover:text-black active:scale-95"
+                          >
+                            <MessageCircle size={14} />
+                            <span>Discuss Solution on WhatsApp</span>
+                          </a>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   {/* Actions Footer */}

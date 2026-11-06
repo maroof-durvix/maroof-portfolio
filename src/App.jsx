@@ -7,6 +7,7 @@ import About from "./components/About.jsx";
 import Services from "./components/Services.jsx";
 import Skills from "./components/Skills.jsx";
 import Projects from "./components/Projects.jsx";
+import CaseStudies from "./components/CaseStudies.jsx";
 import Experience from "./components/Experience.jsx";
 import Contact from "./components/Contact.jsx";
 import DurvixAIAssistant from "./components/DurvixAIAssistant.jsx";
@@ -50,6 +51,7 @@ export default function App() {
             <Services />
             <Skills />
             <Projects />
+            <CaseStudies />
             <Experience />
             <Contact />
           </main>

@@ -17,6 +17,7 @@ A cinematic, high-performance developer portfolio showcasing **20+ production-gr
 - **🤖 Built-in DURVIX AI Assistant:** A localized, multilingual (English, Roman Urdu, Urdu script) interactive chat assistant trained directly on portfolio metadata with zero latency and instant project search.
 - **📱 Verified Android APK Packages:** Direct downloads for **Green Life** (`/GreenLife.apk`) and **Kinetix Fitness** (`/kinetix_fitness_app.apk`).
 - **🖥️ Interactive Sandbox Live Preview:** Multi-device viewport inspector (Desktop, Tablet, Mobile) with dynamic hardware specs, responsive iframe testing, and direct external launchpad support.
+- **💡 Problem ➔ Solution ➔ ROI Case Studies:** In-depth architectural breakdowns of flagship projects (ParcelPulse, DURVIX Estates, Green Life, Scooply, JamesThew, English with MHS, Kinetix) with measurable metrics and high-converting consultation CTAs.
 - **🎨 Luxury Digital Architecture:** Custom dark mode glassmorphism (`#050505`), kinetic scroll HUD indicators, and animated percentage preloader (`0% ➔ 100%`).
 - **📄 Verified Professional Resume:** Direct access to Maroof Ahmed Durwesh's updated 2026 engineering CV (`/MAROOF_AHMED_DURWESH_.pdf`).
 
@@ -55,6 +56,7 @@ maroof-portfolio/
 │   │   ├── Skills.jsx                 # Categorized interactive technical proficiencies
 │   │   ├── Projects.jsx               # Pinned horizontal showcase & HUD reel
 │   │   ├── ProjectCard.jsx            # High-conversion interactive project cards
+│   │   ├── CaseStudies.jsx            # Problem -> Solution -> Result ROI architecture breakdowns
 │   │   ├── LivePreviewModal.jsx       # Multi-device responsive stage & specs inspector
 │   │   ├── Experience.jsx             # Professional timeline & gold award milestones
 │   │   ├── Contact.jsx                # One-click email copy & verified social docks
@@ -100,7 +102,7 @@ npm run preview
 1. Push this repository to your GitHub account (`maroof-durvix/maroof-portfolio`).
 2. Navigate to [vercel.com/new](https://vercel.com/new).
 3. Import the repository **`maroof-portfolio`**.
-4. Set the project name to: **`maroof-portfolio`** *(claims `https://maroof-portfolio.vercel.app`)*.
+4. Set the project name to: **`maroof-portfolio`** *(claims `https://durvix-portfolio.vercel.app`)*.
 5. Framework Preset: **Vite** (Build command: `npm run build`, Output directory: `dist`).
 6. Click **Deploy**.
 
