@@ -13,6 +13,7 @@ export const profile = {
   heroVideo: "/media/intro.mp4",
   heroImage: "/media/poster.jpg",
   resumeUrl: "/MAROOF_AHMED_DURWESH_.pdf",
+  portfolioUrl: "https://durvix-portfolio.vercel.app",
 };
 
 export const nav = [

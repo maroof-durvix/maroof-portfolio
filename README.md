@@ -1,12 +1,12 @@
 # Maroof Ahmed Durwesh — Full-Stack Developer & Software Engineer
 
-[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-maroof--portfolio.vercel.app-FF7A1A?style=for-the-badge&logo=vercel&logoColor=white)](https://maroof-portfolio.vercel.app)
+[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-durvix--portfolio.vercel.app-FF7A1A?style=for-the-badge&logo=vercel&logoColor=white)](https://durvix-portfolio.vercel.app)
 [![Contest-Azm Gold Winner](https://img.shields.io/badge/Contest--Azm-1st_Place_Gold_Winner-10B981?style=for-the-badge&logo=google-play&logoColor=white)](https://green-life-eco-portal.vercel.app)
 [![Founder DURVIX](https://img.shields.io/badge/DURVIX-Founder_%26_Principal_Engineer-2F6BFF?style=for-the-badge)](https://durvix-estates.vercel.app)
 
 A cinematic, high-performance developer portfolio showcasing **20+ production-grade systems**, award-winning cross-platform Flutter mobile applications, and enterprise full-stack backends. Engineered with **React 18, Vite 5, Tailwind CSS, Framer Motion, and Lenis Smooth Scroll**.
 
-🌐 **Official Live URL:** [https://maroof-portfolio.vercel.app](https://maroof-portfolio.vercel.app)
+🌐 **Official Live URL:** [https://durvix-portfolio.vercel.app](https://durvix-portfolio.vercel.app)
 
 ---
 
@@ -115,7 +115,7 @@ vercel --prod
 
 ## 📬 Connect with Maroof Ahmed Durwesh
 
-- **🌐 Live Site:** [maroof-portfolio.vercel.app](https://maroof-portfolio.vercel.app)
+- **🌐 Live Site:** [durvix-portfolio.vercel.app](https://durvix-portfolio.vercel.app)
 - **✉️ Direct Email:** [maroof.durvix@gmail.com](mailto:maroof.durvix@gmail.com)
 - **📱 WhatsApp:** [+92 370 3147721](https://wa.me/message/BDYY4P52CJSXN1)
 - **💼 LinkedIn:** [linkedin.com/in/maroof-ahmed-durwesh](https://www.linkedin.com/in/maroof-ahmed-durwesh)
